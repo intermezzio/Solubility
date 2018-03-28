@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Solubility!</title>
+</head>
+<body>
+<h1>Enter 2 compounds and check if they are soluble!</h1>
+<input type="text" id="cation" placeholder="Cation">
+<input type="text" id="anion" placeholder="Anion">
+<button onclick="isSoluble();">Calculate</button>
+<div id="answer"></div>
+</body>
+<script type="text/javascript">
+	answer = document.getElementById("answer");
+	cation = document.getElementById("cation");
+	anion = document.getElementById("anion");
+	function isSoluble() {
+		c = cation.value;
+		a = anion.value;
+		if(!c || !a) {
+			alert("Please fill out both fields before submitting");
+			return;
+		}
+		console.log(c + " + " + a);
+		//answer.innerHTML = "Soluble";
+	}
+
+
+</script>
+</html>
