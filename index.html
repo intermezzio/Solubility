@@ -10,13 +10,14 @@
 <button onclick="isSoluble();">Calculate</button>
 <div id="answer"></div>
 </body>
+<script src="PeriodicTable.js"></script>
 <script type="text/javascript">
 	answer = document.getElementById("answer");
 	cation = document.getElementById("cation");
 	anion = document.getElementById("anion");
 	function isSoluble() {
-		c = cation.value;
-		a = anion.value;
+		c = cation.value; //Lowercase letters: ion names
+		a = anion.value;  //May be a good idea to trim these or something
 		if(!c || !a) {
 			alert("Please fill out both fields before submitting");
 			return;
@@ -25,11 +26,30 @@
 		//answer.innerHTML = "Soluble";
 
 		//Step 1: Assign Text inputs to chemical compounds
-
-
+		C = strToEl(c); //Capital letters: ion objects
+		A = strToEl(a);
+		if(C == -1 || A == -1) {
+			alert("Please input valid ions.  You entered " + c + " and " + a + ".");
+			return;
+		}
+		if(C.charge <= 0 || A.charge >= 0) {
+			alert("The first compound should be a cation and the second element should be an anion.");
+			return;
+		}
 		//Step 2: Test solubility of ions
+		//add rules
+		answer.innerHTML = "Yipee!  You added " + C.name + " and " + A.name + "!";
+	}
 
-
+	function strToEl(name) {
+		console.log(Ions);
+		var retVal = -1;
+		Ions.forEach( function(ion) {
+			if(name === ion.name || name === ion.symbol) {
+				retVal = ion;
+			}
+		});
+		return retVal;
 	}
 
 
