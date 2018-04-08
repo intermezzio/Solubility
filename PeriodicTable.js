@@ -27,6 +27,12 @@ function addIon(name, symbol, group = -1, charge = 0) {
 //Add ions to the list
 addIon("Hydrogen", "H", 1, 1);
 addIon("Ammonium", "NH4", 1, 1);
+addIon("Sodium", "Na", 1, 1);
+addIon("Potassium", "K", 1, 1);
+addIon("Magnesium", "Mg", 2, 2);
+addIon("Calcium", "Ca", 2, 2);
+addIon("<name(s)>", "Symbol", /* group */ 0, /* charge */ 0);
+
 addIon("Silver", "Ag", 0, 1);
 addIon(["Iron (II)", "Ferrous"], "Fe", /* iron group */ 0, 2);
 addIon(["Iron (III)", "Ferric"], "Fe", /* iron group */ 0, 3);
