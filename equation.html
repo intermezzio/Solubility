@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Solubility!</title>
+	<meta charset="utf-8">
+	<script src="PeriodicTable.js"></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+</head>
+<body>
+<h1>Enter 2 compounds and test the solubility of possible products!</h1>
+<input type="text" id="cation1" placeholder="First Cation">
+<input type="text" id="anion1" placeholder="First Anion">
+<br>
+<input type="text" id="cation2" placeholder="Second Cation">
+<input type="text" id="anion2" placeholder="Second Anion">
+<button onclick="calculateSolubility();">Calculate</button>
+<div id="answer"></div>
+</body>
+<script type="text/javascript">
+	var answer = document.getElementById("answer");
+	var cation1 = document.getElementById("cation1");
+	var anion1 = document.getElementById("anion1");
+	var cation2 = document.getElementById("cation2");
+	var anion2 = document.getElementById("anion2");
+	var C1, A1, C2, A2;
+	function calculateSolubility() {
+		answer.innerHTML = "";
+		var c1 = cation1.value; //Lowercase letters: ion names
+		var a1 = anion1.value;  
+		var c2 = cation2.value;
+		var a2 = anion2.value;
+
+		if(!c1 || !a1 || !c2 || !a2) {
+			answer.innerHTML += "Please fill out all fields.";
+			return;
+		}
+		console.log(c1 + a1 + " + " + c2 + a2);
+		//answer.innerHTML = "Soluble";
+
+		//Step 1: Assign Text inputs to chemical compounds
+		C = strToEl(c); //Capital letters: ion objects
+		A = strToEl(a);
+		if(C == -1 || A == -1) {
+			alert("Please input valid ions.  You entered " + c + " and " + a + ".");
+			return;
+		}
+		if(C.charge <= 0 || A.charge >= 0) {
+			alert("The first ion should be a cation and the second ion should be an anion.");
+			return;
+		}
+		//Step 2: Test solubility of ions
+		//add rules
+		answer.innerHTML = "Yipee!  You added " + C.name + " and " + A.name + "!";
+		var solubility = isSoluble(C, A);
+		if(solubility) {
+			answer.innerHTML += "<br>" + C + " and " + A + " <i>are</i> soluble.";
+		} else {
+			answer.innerHTML += "<br>" + C + " and " + A + " <i>are <strong>not</strong></i> soluble.";
+		}
+	}
+</script>
+</html>
