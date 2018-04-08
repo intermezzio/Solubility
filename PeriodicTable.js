@@ -26,7 +26,7 @@ function addIon(name, symbol, group = -1, charge = 0) {
 
 //Add ions to the list
 addIon("Hydrogen", "H", 1, 1);
-addIon("Ammonium", "NH4", 1, 1);
+addIon("Ammonium", "NH4", 0, 1);
 addIon("Sodium", "Na", 1, 1);
 addIon("Potassium", "K", 1, 1);
 addIon("Magnesium", "Mg", 2, 2);
