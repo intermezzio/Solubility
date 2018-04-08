@@ -3,11 +3,11 @@ Create elements of the periodic table
  */
 
 var PerEl = function(name, symbol, group = -1, charge = 0) {
-	try { //need to improve: how to check if an array is inputted
+	if(Array.isArray(name)) {
 		this.name = name[0];
 		this.names = name;
-	} catch(Exception) {
-		this.name = name; // for main name
+	} else {
+		this.name = name;
 		this.names = [name]; // for alternate names ex: Iron, Ferrous
 	}
 	this.symbol = symbol;
@@ -16,7 +16,7 @@ var PerEl = function(name, symbol, group = -1, charge = 0) {
 };
 
 PerEl.prototype.searchTerm = function(term) {
-	return (term in [this.name, this.symbol]);
+	return term === this.symbol || this.names.indexOf(term) !== -1;
 };
 
 Ions = [];

@@ -43,9 +43,9 @@
 	}
 
 	function strToEl(name) {
-		var retVal = -1;
-		Ions.forEach( function(ion) {
-			if(name === ion.name || name === ion.symbol) {
+		retVal = -1; // need this because return in the foreach does nothing
+		Ions.forEach(function(ion) {
+			if(ion.searchTerm(name)) {
 				retVal = ion;
 			}
 		});
