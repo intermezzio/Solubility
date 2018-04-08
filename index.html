@@ -6,21 +6,24 @@
 	<script src="PeriodicTable.js"></script>
 </head>
 <body>
-<h1>Enter 2 compounds and check if they are soluble!</h1>
+<h1>Enter 2 ions and check if they are soluble!</h1>
 <input type="text" id="cation" placeholder="Cation">
 <input type="text" id="anion" placeholder="Anion">
-<button onclick="isSoluble();">Calculate</button>
+<button onclick="calculateSolubility();">Calculate</button>
 <div id="answer"></div>
 </body>
 <script type="text/javascript">
-	answer = document.getElementById("answer");
-	cation = document.getElementById("cation");
-	anion = document.getElementById("anion");
-	function isSoluble() {
-		c = cation.value; //Lowercase letters: ion names
-		a = anion.value;  //May be a good idea to trim these or something
+	var answer = document.getElementById("answer");
+	var cation = document.getElementById("cation");
+	var anion = document.getElementById("anion");
+	var C, A;
+	function calculateSolubility() {
+		answer.innerHTML = "";
+		var c = cation.value; //Lowercase letters: ion names
+		var a = anion.value;  
+
 		if(!c || !a) {
-			alert("Please fill out both fields before submitting");
+			answer.innerHTML += "Please fill out both fields.";
 			return;
 		}
 		console.log(c + " + " + a);
@@ -34,24 +37,18 @@
 			return;
 		}
 		if(C.charge <= 0 || A.charge >= 0) {
-			alert("The first compound should be a cation and the second element should be an anion.");
+			alert("The first ion should be a cation and the second ion should be an anion.");
 			return;
 		}
 		//Step 2: Test solubility of ions
 		//add rules
 		answer.innerHTML = "Yipee!  You added " + C.name + " and " + A.name + "!";
+		var solubility = isSoluble(C, A);
+		if(solubility) {
+			answer.innerHTML += "<br>" + C + " and " + A + " <i>are</i> soluble.";
+		} else {
+			answer.innerHTML += "<br>" + C + " and " + A + " <i>are <strong>not</strong></i> soluble.";
+		}
 	}
-
-	function strToEl(name) {
-		retVal = -1; // need this because return in the foreach does nothing
-		Ions.forEach(function(ion) {
-			if(ion.searchTerm(name)) {
-				retVal = ion;
-			}
-		});
-		return retVal;
-	}
-
-
 </script>
 </html>
