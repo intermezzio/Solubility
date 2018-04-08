@@ -3,7 +3,13 @@ Create elements of the periodic table
  */
 
 var PerEl = function(name, symbol, group = -1, charge = 0) {
-	this.name = name;
+	try { //need to improve: how to check if an array is inputted
+		this.name = name[0];
+		this.names = name;
+	} catch(Exception) {
+		this.name = name; // for main name
+		this.names = [name]; // for alternate names ex: Iron, Ferrous
+	}
 	this.symbol = symbol;
 	this.group = group;
 	this.charge = charge;
@@ -18,7 +24,14 @@ function addIon(name, symbol, group = -1, charge = 0) {
 	Ions.push(new PerEl(name, symbol, group, charge));
 }
 
+//Add ions to the list
 addIon("Hydrogen", "H", 1, 1);
 addIon("Ammonium", "NH4", 1, 1);
+addIon("Silver", "Ag", 0, 1);
+addIon(["Iron (II)", "Ferrous"], "Fe", /* iron group */ 0, 2);
+addIon(["Iron (III)", "Ferric"], "Fe", /* iron group */ 0, 3);
 
 addIon("Carbonate", "CO3", 0, -2);
+addIon("Sulfate", "SO4", 0, -2);
+addIon("Phosphate", "PO4", 0, -3);
+addIon("Chlorate", "ClO3", 0, -1);

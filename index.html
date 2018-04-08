@@ -2,6 +2,8 @@
 <html>
 <head>
 	<title>Solubility!</title>
+	<meta charset="utf-8">
+	<script src="PeriodicTable.js"></script>
 </head>
 <body>
 <h1>Enter 2 compounds and check if they are soluble!</h1>
@@ -10,7 +12,6 @@
 <button onclick="isSoluble();">Calculate</button>
 <div id="answer"></div>
 </body>
-<script src="PeriodicTable.js"></script>
 <script type="text/javascript">
 	answer = document.getElementById("answer");
 	cation = document.getElementById("cation");
@@ -42,7 +43,6 @@
 	}
 
 	function strToEl(name) {
-		console.log(Ions);
 		var retVal = -1;
 		Ions.forEach( function(ion) {
 			if(name === ion.name || name === ion.symbol) {
