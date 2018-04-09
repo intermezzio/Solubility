@@ -1,8 +1,8 @@
 /**
-Create elements of the periodic table
+Create ions of the periodic table
  */
 
-var PerEl = function(name, symbol, group = -1, charge = 0, duplicate = 0) {
+var PerEl = function(name, symbol, charge, paren = false, state = "s", group = 0, duplicate = 0) {
 	if(Array.isArray(name)) {
 		this.name = name[0];
 		this.names = name;
@@ -14,10 +14,17 @@ var PerEl = function(name, symbol, group = -1, charge = 0, duplicate = 0) {
 	this.group = group;
 	this.charge = charge;
 	this.duplicate = duplicate; // for multiple ions of the same element
+	this.paren = paren;
+	this.state = state;
 };
 
 PerEl.prototype.toString = function toString() {
 	return this.name;
+}
+
+Ions = [];
+function addIon(name, symbol, charge, paren = false, state = "s", group = 0, duplicate = 0) {
+	Ions.push(new PerEl(name, symbol, charge, paren, state, group, duplicate));
 }
 
 function strToEl(name) {
@@ -86,28 +93,3 @@ function isSoluble(C, A) {
 	console.log("The following information is faulty");
 	return false;
 }
-
-Ions = [];
-function addIon(name, symbol, group = -1, charge = 0, duplicate = 0) {
-	Ions.push(new PerEl(name, symbol, group, charge, duplicate));
-}
-
-//Add ions to the list
-addIon("Hydrogen", "H", 1, 1);
-addIon("Ammonium", "NH4", 0, 1);
-addIon("Sodium", "Na", 1, 1);
-addIon("Potassium", "K", 1, 1);
-addIon("Magnesium", "Mg", 2, 2);
-addIon("Calcium", "Ca", 2, 2);
-addIon("<name(s)>", "Symbol", /* group */ 0, /* charge */ 0);
-
-addIon("Chromium (III)", "Cr", 6, 3);
-addIon("Silver", "Ag", 0, 1);
-addIon(["Iron (II)", "Ferrous"], "Fe", /* iron group */ 0, 2);
-addIon(["Iron (III)", "Ferric"], "Fe", /* iron group */ 0, 3);
-
-addIon("Carbonate", "CO3", 0, -2);
-addIon("Nitrate", "NO3", 0, -1);
-addIon("Sulfate", "SO4", 0, -2);
-addIon("Phosphate", "PO4", 0, -3);
-addIon("Chlorate", "ClO3", 0, -1);
