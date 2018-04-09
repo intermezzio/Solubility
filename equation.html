@@ -38,10 +38,14 @@
 		//answer.innerHTML = "Soluble";
 
 		//Step 1: Assign Text inputs to chemical compounds
-		C = strToEl(c); //Capital letters: ion objects
-		A = strToEl(a);
-		if(C == -1 || A == -1) {
-			alert("Please input valid ions.  You entered " + c + " and " + a + ".");
+		var valid = true;
+		[c1,a1,c2,a2].forEach(function(ion){
+			if(strToEl(ion) === -1) {
+				answer.innerHTML += "Sorry, we do not recognize " + ion + ".<br>";
+				valid = false;
+			}
+		})
+		if(!valid) {
 			return;
 		}
 		if(C.charge <= 0 || A.charge >= 0) {

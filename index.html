@@ -30,6 +30,17 @@
 		//answer.innerHTML = "Soluble";
 
 		//Step 1: Assign Text inputs to chemical compounds
+		var valid = true;
+		[c,a].forEach(function(ion){
+			if(strToEl(ion) === -1) {
+				answer.innerHTML += "Sorry, we do not recognize " + ion + ".<br>";
+				valid = false;
+			}
+		})
+		if(!valid) {
+			return;
+		}
+
 		C = strToEl(c); //Capital letters: ion objects
 		A = strToEl(a);
 		if(C == -1 || A == -1) {
