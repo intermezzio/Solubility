@@ -12,11 +12,17 @@ addIon("<name(s)>", "Symbol", /* charge */ 1);
 
 addIon("Chromium (III)", "Cr", 3);
 addIon("Silver", "Ag", 1);
-addIon(["Iron (II)", "Ferrous"], "Fe", 2);
-addIon(["Iron (III)", "Ferric"], "Fe", 3);
+addIon(["Iron (II)", "Ferrous"], "Fe", 2, false, "s", 8, 1);
+addIon(["Iron (III)", "Ferric"], "Fe", 3, false, "s", 8, 1);
 
-addIon("Carbonate", "CO3", -2);
-addIon("Nitrate", "NO3", -1);
-addIon("Sulfate", "SO4", -2);
-addIon("Phosphate", "PO4", -3);
-addIon("Chlorate", "ClO3", -1);
+addIon("Carbonate", "CO3", -2, true);
+addIon("Nitrate", "NO3", -1, true);
+addIon("Sulfate", "SO4", -2, true);
+addIon("Phosphate", "PO4", -3, true);
+addIon("Chlorate", "ClO3", -1, true);
+addIon("Perchlorate", "ClO2", -1, true);
+
+addIon("Sulfide", "S", -2);
+
+addIon("Oxide", "O2", -2, false, "s", 16);
+addIon("Hydroxide", "OH", -1, true);
