@@ -5,9 +5,9 @@ addIon(name, symbol, charge, paren = false, state = "s", group = 0, duplicate = 
 addIon("Hydrogen", "H", 1, false, "g", 1);
 addIon("Ammonium", "NH4", 1, true, "g");
 addIon("Sodium", "Na", 1, false, "s", 1);
-addIon("Potassium", "K", 1);
-addIon("Magnesium", "Mg", 2);
-addIon("Calcium", "Ca", 2);
+addIon("Potassium", "K", 1, false, "s", 1);
+addIon("Magnesium", "Mg", 2, false, "s", 2);
+addIon("Calcium", "Ca", 2, false, "s", 2);
 addIon("<name(s)>", "Symbol", /* charge */ 1);
 
 addIon("Chromium (III)", "Cr", 3);
