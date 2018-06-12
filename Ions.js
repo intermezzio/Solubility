@@ -14,6 +14,7 @@ addIon("Chromium (III)", "Cr", 3);
 addIon("Silver", "Ag", 1);
 addIon(["Iron (II)", "Ferrous"], "Fe", 2, false, "s", 8, 1);
 addIon(["Iron (III)", "Ferric"], "Fe", 3, false, "s", 8, 1);
+addIon("Aluminum", "Al", 3);
 
 addIon("Carbonate", "CO3", -2, true);
 addIon("Nitrate", "NO3", -1, true);
