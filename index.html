@@ -2,26 +2,64 @@
 <html>
 <head>
 	<title>Solubility!</title>
-	<meta charset="utf-8">	
+	<meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+
 	<script src="PeriodicTable.js"></script>
 	<script src="Ions.js"></script>
 </head>
 <body>
 <h1>Enter 2 ions and check if they are soluble!</h1>
-<input type="text" id="cation" placeholder="Cation">
-<input type="text" id="anion" placeholder="Anion">
+<input type="text" id="cation" placeholder="Cation" class="check" onkeypress="check();">
+<input type="text" id="anion" placeholder="Anion" class="check" onkeypress="check();">
 <button onclick="calculateSolubility();">Calculate</button>
 <div id="answer"></div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 <script type="text/javascript">
 	var answer = document.getElementById("answer");
 	var cation = document.getElementById("cation");
 	var anion = document.getElementById("anion");
 	var C, A;
+	var inps = document.getElementsByClassName("check");
+	cation.addEventListener("keypress", check);
+	anion.addEventListener("keypress", check);
+	var check = function() {
+		console.log("checking...");
+		let e = window.event;
+		console.log("defined");
+		let el = e.currentTarget;
+		let val = el.value;
+		if(el.id == "cation") {
+			let x = true;
+		} else {
+			let x = false;
+		}
+		let found = find(val, x);
+		if(found) {
+			el.classList.remove("invalid");
+			el.classList.add("valid");
+			console.log("valid");
+		} else {
+			el.classList.remove("valid");
+			el.classList.add("invalid");
+			console.log("invalid");
+		}
+		return;
+	};
+	var find = function(name, cation) {
+		let found = false;
+		Ions.forEach( (ion) => {
+			if((ion.charge ^ !cation) && ion.searchTerm(name)) {
+				found = true;
+			}
+		});
+		return found;
+	}
 	function calculateSolubility() {
 		answer.innerHTML = "";
 		var c = cation.value; //Lowercase letters: ion names
-		var a = anion.value;  
+		var a = anion.value;
 
 		if(!c || !a) {
 			answer.innerHTML += "Please fill out both fields.";
