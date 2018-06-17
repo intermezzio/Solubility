@@ -1,0 +1,28 @@
+input {
+  border-color: gray;
+  border-radius: 0px;
+  border-style: solid;
+  border-width: medium;
+}
+
+.valid {
+  border: inherit;
+  border-radius: 3px;
+  transition: border .2s background-color 0.2s;
+  -moz-webkit-transition: border .2s background-color 0.2s;
+}
+.valid :focus {
+  border: 2px solid green;
+  background-color: rgba(0,255,0,.5);
+}
+
+.invalid {
+  border: inherit;
+  border-radius: 3px;
+  transition: border .2s background-color 0.2s;
+  -moz-webkit-transition: border .2s background-color 0.2s;
+}
+.invalid :focus {
+  border: 2px solid red;
+  background-color: rgba(255,0,0,.5);
+}
